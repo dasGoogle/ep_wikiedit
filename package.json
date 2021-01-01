@@ -1,14 +1,17 @@
 {
-  "name": "ep_padwiki",
+  "name": "ep_workspaces",
   "version": "0.1.0",
-  "description": "A simple sidebar for etherpad lite which adds wiki-like functionality.",
-  "author": "nein (Jaro Habiger) <jarohabiger@googlemail.com>",
+  "description": "A workspace editor to edit multiple pads at once",
+  "author": "Aaron Schlitt (aaron@aaronschlitt.de)",
   "repository": {
     "type": "git",
-    "url": "git://github.com/jatha/padwiki.git"
+    "url": ""
   },
   "license": "GPL-3.0",
   "dependencies": {
-    "express": "^4.15.2"
+    "express": "^4.15.2",
+    "material-icons-font": "^2.1.0",
+    "materialize-css": "^1.0.0",
+    "vue": "^2.6.12"
   }
 }

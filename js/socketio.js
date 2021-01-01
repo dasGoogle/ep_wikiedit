@@ -11,26 +11,28 @@ exports.socketio = function (hook_name, args, cb) {
 
   // handle clients
   io.sockets.on('connection', function (client) {
-    client.on('wiki.join', function (wikiId) {
-      var dbKey = 'wiki:' + wikiId
+    client.on('workspace.join', function (workspaceId) {
+      var dbKey = 'workspace:' + workspaceId
 
       // send initial data on join
-      console.log('someone joined the wiki with id: ' + wikiId)
+      console.log('someone joined the workspace with id: ' + workspaceId)
       db.get(dbKey, function (err, value) {
         if (!value) {
-          value = {'title': wikiId, 'pads': [
-              {'title': 'Home', 'id': 'wiki:' + wikiId + '.home'}
+          value = {'title': workspaceId, 'pads': [
+              {'title': 'Home', 'id': 'workspace:' + workspaceId + '.home'}
             ]
           }
         }
-        client.emit('wiki.update:' + wikiId, value)
+        client.emit('workspace.update:' + workspaceId, value)
       });
 
       // write updates to db and publish them
-      client.on('wiki.update', function (updateEvent) {
+      client.on('workspace.update', function (updateEvent) {
         db.set(dbKey, updateEvent)
-        io.sockets.emit('wiki.update:' + wikiId, updateEvent)
+        io.sockets.emit('workspace.update:' + workspaceId, updateEvent)
       })
     })
   })
+
+  return true;
 }

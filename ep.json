@@ -1,11 +1,11 @@
 {
   "parts": [
     {
-      "name": "PadWiki",
+      "name": "Workspaces",
 
       "hooks": {
-        "expressCreateServer": "ep_padwiki/js/express",
-        "socketio": "ep_padwiki/js/socketio"
+        "expressCreateServer": "ep_workspaces/js/express.js",
+        "socketio": "ep_workspaces/js/socketio.js"
       }
     }
   ]
