@@ -32,8 +32,12 @@
         <a onClick="createRandomWorkspace()" class="waves-effect waves-light btn-large red"><i class="material-icons left">create_new_folder</i>New
             Workspace</a>
         <p class="flow-text">Alternatively, you can also create a workspace with a custom name.</p>
-        <input></input>
-        <p class="flow-text"><b>Attention: </b>#
+        <div class="row">
+            <input id="input" class="col s10" onkeypress="navToInput()"></input>
+            <a onclick="navToInput()" href="#" class="col s2 btn-flat red-text waves-red">Create<i class="material-icons left">send</i></a>
+        </div>
+        
+        <p class="flow-text"><b>Attention: </b>
             Be aware that anyone who has this id will be able to view your workspace. </br> 
             So choose a complex enough id. You will be able to rename your workspace later. </p>
     </div>
@@ -56,6 +60,11 @@
 
         function navigateToWorkspace(id) {
             window.location.href = '/w/' + id
+        }
+
+        function navToInput() {
+            if(event && event.keyCode != 13) return;
+            navigateToWorkspace(document.getElementById('input').value)
         }
     </script>
 
