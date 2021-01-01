@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!--Import Google Icon Font-->
+    <link href="/workspace_res/fonts/material-icons-font.css" rel="stylesheet" />
+    <!--Import materialize.css-->
+    <link rel="stylesheet" href="/workspace_res/mcss/css/materialize.min.css" />
+
+    <link rel="stylesheet" href="/workspace_res/local/style.css">
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+
+<body>
+    <div id="app">
+
+
+        <sidenav>
+            <wsheader v-bind:title="title"></wsheader>
+            <filetree v-bind:filetree="filetree" v-bind:focused="focused"></filetree>
+            <createrootbtn></createrootbtn>
+        </sidenav>
+
+        <main class="grid-frame">
+            <a href="#" data-target="slide-out" class="sidenav-trigger tab-container"><i class="material-icons">menu</i></a>
+
+            <div class="col s12" id="tab-container">
+                <tabbar v-bind:files="openFiles" v-bind:focused="focused"></tabbar>
+            </div>
+            <padframes v-bind:files="openFiles" v-bind:focused="focused"></padframes>
+            <hintpage v-if="openFiles.length == 0" v-bind:title="title"></hintpage>
+
+
+
+        </main>
+    </div>
+
+    <!--JavaScript at end of body for optimized loading-->
+    <script type="text/javascript" src="/workspace_res/mcss/js/materialize.min.js"></script>
+    <script type="text/javascript" src="/workspace_res/vue/vue.min.js"></script>
+    <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+    <script type="text/javascript" src="/workspace_res/local/components.js"></script>
+    <script type="text/javascript" src="/workspace_res/local/script.js"></script>
+</body>
+
+</html>
